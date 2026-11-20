@@ -1,0 +1,86 @@
+/* 選ばれる理由 */
+.approach-introduction {
+  width: min(90%, 1020px);
+  margin-inline: auto;
+  padding-block: clamp(50px, 6vw, 92px);
+  text-align: center;
+}
+.approach-introduction h2,
+.approach-copy h2 {
+  color: var(--green);
+  font-size: clamp(24px, 2.65vw, 40px);
+  font-weight: 500;
+  line-height: 1.65;
+}
+.approach-introduction > p {
+  width: min(100%, 42em);
+  margin: 24px auto 36px;
+  text-align: start;
+  line-height: 2;
+}
+.approach-index {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-block: 1px solid var(--line);
+}
+.approach-index a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 9%;
+  color: var(--green);
+}
+.approach-index a + a { border-inline-start: 1px solid var(--line); }
+.approach-index span { color: var(--ochre); }
+.approach-feature {
+  padding-block: clamp(56px, 6.5vw, 104px);
+  background: var(--white);
+}
+#psychology.approach-feature { background: var(--table-head); }
+.approach-spread {
+  width: min(90%, 1150px);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.87fr) minmax(0, 1.13fr);
+  gap: clamp(30px, 5vw, 84px);
+  align-items: start;
+}
+.approach-spread figure { margin: 0; }
+.approach-spread img {
+  aspect-ratio: 5 / 4;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.approach-portrait img { aspect-ratio: 1; }
+.approach-spread figcaption { margin-top: 8px; font-size: 12px; color: var(--ink); }
+.approach-copy > .approach-label {
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--green);
+  font-size: 15px;
+}
+.approach-label::before { content: ""; width: 30px; border-top: 1px solid var(--gold); }
+.approach-copy h2 { font-size: clamp(23px, 2.25vw, 34px); margin-bottom: 20px; }
+.approach-copy p, .approach-menus dd { line-height: 1.95; }
+.approach-example, .approach-menus {
+  margin: 26px 0 18px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+}
+.approach-example h3 { margin-bottom: 8px; color: var(--green); font-size: 18px; }
+.approach-note { font-size: 14px; }
+.approach-link { color: var(--green); text-decoration: underline; text-underline-offset: .28em; }
+.approach-copy > .approach-link { display: inline-block; margin-top: 18px; }
+.approach-menus > div + div { padding-top: 16px; margin-top: 16px; border-top: 1px solid var(--line); }
+.approach-menus dd { margin-top: 5px; }
+@media (max-width: 760px) {
+  .approach-spread { grid-template-columns: 1fr; gap: 22px; }
+  .approach-spread img { aspect-ratio: 1.7; }
+  .approach-portrait img { width: min(76%, 310px); aspect-ratio: 1; }
+  .approach-index { grid-template-columns: 1fr; text-align: start; }
+  .approach-index a { padding: 12px 4%; }
+  .approach-index a + a { border-inline-start: 0; border-top: 1px solid var(--line); }
+}
