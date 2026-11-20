@@ -1,0 +1,68 @@
+/* お問い合わせページ */
+.chapter-contact .inner-cover img {
+  height: clamp(180px, 23vw, 345px);
+  object-position: center 54%;
+}
+.contact-guide {
+  width: min(88%, 760px);
+  margin: 0 auto;
+  padding-block: clamp(48px, 6vw, 85px);
+}
+.contact-guide section + section { margin-top: clamp(52px, 6vw, 85px); }
+.contact-guide h2 {
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  color: var(--green);
+  font-size: clamp(22px, 2.1vw, 30px);
+  border-bottom: 1px solid var(--gold);
+}
+.contact-guide p { line-height: 2; }
+.contact-guide .booking-status { margin-block: 14px 20px; color: var(--green); }
+.contact-guides {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.contact-guides a {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 22px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--green);
+}
+.contact-guides a:hover { border-color: var(--green); }
+.inquiry-sheet {
+  background: var(--table-head);
+  margin-top: 23px;
+  padding: clamp(21px, 4.2vw, 58px);
+}
+.intake-status {
+  border-left: 3px solid var(--gold);
+  padding-left: 16px;
+}
+.intake-status strong,.intake-status span { display: block; }
+.intake-status strong { color: var(--green); font-size: 19px; font-weight: 500; }
+.intake-status span { font-size: 14px; }
+.inquiry-sheet fieldset { min-width: 0; border: 0; margin: 28px 0 0; padding: 0; }
+.inquiry-sheet legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.inquiry-field + .inquiry-field { margin-top: 18px; }
+.inquiry-field label { display: block; margin-bottom: 5px; }
+.inquiry-field :is(input,select,textarea) {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 11px 14px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  line-height: 1.6;
+}
+.inquiry-field :disabled { cursor: not-allowed; }
+@media(max-width: 600px) {
+  .contact-guides { grid-template-columns: 1fr; }
+  .contact-guide { width: 90%; }
+}
