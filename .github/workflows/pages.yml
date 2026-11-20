@@ -1,0 +1,52 @@
+name: Publish salon preview
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.publish.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare public files
+        run: |
+          mkdir site
+          cp *.html .nojekyll site/
+          cp -R css img site/
+      - name: Restore approved display photos
+        env:
+          SALON_PHOTOS_1: ${{ secrets.SALON_PHOTOS_1 }}
+          SALON_PHOTOS_2: ${{ secrets.SALON_PHOTOS_2 }}
+          SALON_PHOTOS_3: ${{ secrets.SALON_PHOTOS_3 }}
+          SALON_PHOTOS_4: ${{ secrets.SALON_PHOTOS_4 }}
+          SALON_PHOTOS_5: ${{ secrets.SALON_PHOTOS_5 }}
+          SALON_PHOTOS_6: ${{ secrets.SALON_PHOTOS_6 }}
+          SALON_PHOTOS_7: ${{ secrets.SALON_PHOTOS_7 }}
+          SALON_PHOTOS_8: ${{ secrets.SALON_PHOTOS_8 }}
+        run: |
+          python3 - <<'PYTHON'
+          import base64, hashlib, io, os, zipfile
+          from pathlib import Path
+          keys = ['SALON_PHOTOS_1', 'SALON_PHOTOS_2', 'SALON_PHOTOS_3', 'SALON_PHOTOS_4', 'SALON_PHOTOS_5', 'SALON_PHOTOS_6', 'SALON_PHOTOS_7', 'SALON_PHOTOS_8']
+          data = base64.b64decode("".join(os.environ[key] for key in keys), validate=True)
+          assert hashlib.sha256(data).hexdigest() == "0f711e744e4924321cb680432968b926d049b187beaa2f1191d40f3f78bd251a"
+          with zipfile.ZipFile(io.BytesIO(data)) as photos:
+              for name in ['profile.jpg', 'ig-greeting.jpg', 'ig_20250106_01.jpg']:
+                  Path("site/img", name).write_bytes(photos.read(name))
+          PYTHON
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: publish
+        uses: actions/deploy-pages@v4
