@@ -312,10 +312,6 @@ main {background-color:var(--paper);background-image:repeating-linear-gradient(1
 .access-table dd {background:var(--white)}
 .map-box,.map-box iframe {width:100%;height:320px}
 .map-box {border:1px solid var(--line);background:var(--table-head)}
-.map-invitation {height:100%;display:grid;align-content:center;justify-items:center;gap:5px}
-.map-invitation>span {font-size:24px;color:var(--green)}
-.map-invitation .button {font:inherit;font-size:14px;cursor:pointer;background:var(--white)}
-.map-invitation[hidden],.map-box iframe[hidden]{display:none}
 .map-box iframe {display:block;border:0;height:100%}
 .book-layout {display:grid;align-items:center;max-width:900px;gap:28px}
 .cover-placeholder {aspect-ratio:2/3;max-width:190px;width:100%;justify-self:center;background:var(--table-head);border:1px solid var(--line);display:grid;place-items:center;color:var(--ochre);font-size:13px}
@@ -354,11 +350,6 @@ main {background-color:var(--paper);background-image:repeating-linear-gradient(1
  .mobile-nav nav {top:100%}.mobile-nav[open] {z-index:3}
 }
 
-/* 町名の案内図はローカルで表示し、Google マップはボタンで開く。 */
-.map-box {position:relative;display:grid;align-items:center;justify-items:center;background:var(--paper) url("../img/miwa-area.jpg") center / cover}
-.map-box .map-invitation {height:auto;padding:12px 22px;background:var(--white);border:1px solid var(--line)}
-.map-credit {position:absolute;right:0;bottom:0;padding:2px 6px;background:var(--white);font-size:11px;color:var(--green)}
-.map-box:has(iframe:not([hidden])) .map-credit {display:none}
 .detail-lead img[src$="dna-dialogue.jpg"],.detail-lead img[src$="psychology.jpg"] {object-position:50% 5%}
 @media(max-width:700px){.flow .visit-list{width:min(100%,87.5vw)}}
 
@@ -416,11 +407,12 @@ main {background-color:var(--paper);background-image:repeating-linear-gradient(1
 .access-scene{position:relative;min-height:220px}
 .access-scene img{position:absolute;width:100%;height:100%;object-fit:cover;object-position:55% 34%}
 .access-scene figcaption{position:absolute;bottom:0;right:0;padding:2px 6px;font-size:11px;background:var(--white)}
-.access-feature .map-box{margin-top:clamp(24px,4vw,58px);height:clamp(240px,25vw,320px);align-items:end;justify-items:start}
-.access-feature .map-box .map-invitation{background:none;border:0;padding:12px}
+.access-feature .map-box{margin-top:clamp(24px,4vw,58px);height:clamp(240px,25vw,320px)}
 @media(max-width:700px){
 .hero .hero-owner{bottom:calc(3% + 98px);right:4%;padding:4px 10px 4px 4px;gap:7px}
 .hero .hero-owner img{width:36px;height:36px}.hero-owner span{font-size:14px}.hero-owner small{font-size:9px}
 .social-inner{width:90%}.social-track li{flex-basis:78%}
 .access-pair{grid-template-columns:1fr}.access-scene{order:-1;min-height:0;aspect-ratio:1.85}
 .access-feature .heading{margin-bottom:25px}.access-feature .map-box{height:320px}}
+
+.map-external {display:table;margin:12px 0 0 auto;color:var(--green);font-size:14px;text-underline-offset:4px}
